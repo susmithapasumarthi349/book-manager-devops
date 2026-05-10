@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumina Bookshelf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Personal Reading Tracker</p>
+        <h1>Lumina Bookshelf</h1>
+        <p class="hero-text">Track what you are reading, see your progress, and keep your bookshelf feeling alive instead of forgotten.</p>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-metric">
+          <span id="heroCompletionRate">0%</span>
+          <p>Book completion</p>
+        </div>
+        <div class="hero-metric secondary">
+          <span id="heroPagesRead">0</span>
+          <p>pages logged</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel add-panel">
+        <div class="panel-heading">
+          <h2>Add a book</h2>
+          <p>Drop in your next read and start tracking right away.</p>
+        </div>
+
+        <form id="bookForm" class="book-form">
+          <label>
+            <span>Title</span>
+            <input id="title" name="title" placeholder="Atomic Habits" required>
+          </label>
+          <label>
+            <span>Author</span>
+            <input id="author" name="author" placeholder="James Clear" required>
+          </label>
+          <label>
+            <span>Total pages</span>
+            <input id="pages" name="pages" type="number" min="1" placeholder="320" required>
+          </label>
+          <label>
+            <span>Current page</span>
+            <input id="progress" name="progress" type="number" min="0" placeholder="40" required>
+          </label>
+          <button class="primary-button" type="submit">Add to shelf</button>
+        </form>
+
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel library-panel">
+        <div class="toolbar">
+          <div class="panel-heading">
+            <h2>Your library</h2>
+            <p>Search, filter, and update your reading progress in place.</p>
+          </div>
+
+          <div class="toolbar-controls">
+            <input type="text" id="search" placeholder="Search by title or author">
+            <div class="filter-group" id="statusFilters" role="group" aria-label="Filter books by status">
+              <button type="button" class="filter-chip active" data-filter="all">All</button>
+              <button type="button" class="filter-chip" data-filter="reading">Reading</button>
+              <button type="button" class="filter-chip" data-filter="completed">Completed</button>
+              <button type="button" class="filter-chip" data-filter="unread">Unread</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats">
+          <article class="stat-card">
+            <span>Total Books</span>
+            <strong id="total">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Reading</span>
+            <strong id="reading">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Completed</span>
+            <strong id="completed">0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Unread</span>
+            <strong id="unread">0</strong>
+          </article>
+        </div>
+
+        <div id="bookList" class="grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: book-devops-deployment
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: book-devops
+
+  template:
+    metadata:
+      labels:
+        app: book-devops
+
+    spec:
+      containers:
+      - name: book-devops-container
+        image: book-devops
+        imagePullPolicy: Never
+
+        ports:
+        - containerPort: 9090
